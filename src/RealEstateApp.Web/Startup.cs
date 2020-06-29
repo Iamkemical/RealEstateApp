@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using RealEstateApp.Data.DatabaseContexts.ApplicationDbContext;
 using RealEstateApp.Data.DatabaseContexts.AuthenticationDbContext;
 using RealEstateApp.Data.Entities;
+using RealEstateApp.Web.Interfaces;
+using RealEstateApp.Web.Services;
 
 namespace RealEstateApp.Web
 {
@@ -55,6 +57,8 @@ namespace RealEstateApp.Web
             });
 
             services.AddControllersWithViews();
+
+            services.AddTransient<IAccountsService, AccountService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,6 +79,8 @@ namespace RealEstateApp.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

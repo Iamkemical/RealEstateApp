@@ -1,0 +1,28 @@
+@using Microsoft.AspNetCore.Identity
+@using RealEstateApp.Data.Entities
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+    
+@if(SignInManager.IsSignedIn(User))
+{
+    <div class="button navbar-right">
+        <form method = "post">
+            <button class="navbar-btn nav-button wow bounceInRight login" asp-controller="Account" asp-action="Logout" data-wow-delay="0.4s">Logout</button>
+        </form>
+    </div>
+}
+else
+{
+    <div class="button navbar-right">
+        <form action="get">
+            <button class="navbar-btn nav-button wow bounceInRight login" asp-controller="Account" asp-action = "Login"  data-wow-delay="0.4s">
+                <a href="~/account/login">Login</a>
+            </button>
+            <button class="navbar-btn nav-button wow fadeInRight" asp-controller="Account" asp-action = "Register" data-wow-delay="0.5s">
+                <a href="~/account/register">Register</a>
+            </button>
+        </form>
+        
+    </div>
+}
+    
