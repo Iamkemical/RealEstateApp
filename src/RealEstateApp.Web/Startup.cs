@@ -59,6 +59,7 @@ namespace RealEstateApp.Web
             services.AddControllersWithViews();
 
             services.AddTransient<IAccountsService, AccountService>();
+            services.AddTransient<IPropertyService, PropertyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
